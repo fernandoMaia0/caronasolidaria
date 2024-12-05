@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Carona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .header .logo span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .header .user-info-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            gap: 10px;
+        }
+
+        .header .user-info span {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .header .user-info img {
+            height: 20px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            margin-top: 10px; /* Move o título mais para cima */
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 500px; /* Diminuída a largura do contêiner */
+            margin: 0; /* Remove alinhamento automático */
+        }
+
+        .card .buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card .buttons button {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .buttons button:hover {
+            background-color: #f9f9f9;
+        }
+
+        .card .divider {
+            width: calc(100% + 30px); /* Faz a linha encostar nas bordas do contêiner */
+            height: 1px;
+            background-color: #ddd;
+            margin: 10px -15px; /* Compensa o padding do contêiner */
+        }
+
+        .card h3 {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .card p strong {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'app/icone_logo_ver_carona.png' %}" alt="Logo">
+            <span>Carona Solidária</span>
+        </div>
+        <div class="user-info-container">
+            <span>Nome do usuário</span>
+            <img src="{% static 'app/icone_pessoa.png' %}" alt="Usuário">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Nome da carona</h1>
+        <div class="card">
+            <div class="buttons">
+                <button>Editar</button>
+                <button>Mensagens</button>
+            </div>
+            <div class="divider"></div>
+            <h3>Motorista</h3>
+            <p><strong>Nome:</strong> Matheus Oliveira</p>
+
+            <h3>Saindo de</h3>
+            <p><strong>Cidade:</strong> Parnamirim</p>
+            <p><strong>Bairro:</strong> Nova Parnamirim</p>
+
+            <h3>Indo para</h3>
+            <p><strong>Cidade:</strong> Natal</p>
+            <p><strong>Bairro:</strong> Cidade Alta</p>
+
+            <h3>Detalhes</h3>
+            <p><strong>Horário:</strong> 7:00</p>
+            <p><strong>Vagas:</strong> 2 vagas (4)</p>
+            <p><strong>Dias da semana:</strong> Segunda, Terça e Quinta</p>
+        </div>
+    </div>
+</body>
+</html>
