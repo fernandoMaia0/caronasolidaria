@@ -114,19 +114,46 @@
     <div class="container">
         <div class="form-container">
             <h1>Cadastrar</h1>
-            <form>
-                <label for="username">Nome do usuário</label>
-                <input type="text" id="username" placeholder="Digite seu nome" required>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="nome_completo">Nome Completo</label>
+                {{ form.nome_completo }}
+                
+                <label for="cnh">CNH(para usuarios habilitados)</label>
+                {{ form.cnh }}
+                
+                <label for="telefone">Telefone</label>
+                {{ form.telefone }}
                 
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Digite seu email" required>
+                {{ form.email }}
+                {% if form.email.errors %}
+                     <p class="error" style="color: red;">{{ form.email.errors.0 }}</p>
+                {% endif %}
                 
-                <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="Digite sua senha" minlength="8" required>
-                <span class="password-hint">Tamanho mínimo de 8 caracteres</span>
+                <label for="senha">Senha</label>
+                {{ form.senha }}
+                
+                <label for="confirma_senha">confirmação de senha</label>
+                {{ form.confirma_senha }}
+                {% if form.confirma_senha.errors %}
+                     <p class="error" style="color: red;">{{ form.confirma_senha.errors.0 }}</p>
+                {% endif %}
+
+                <label for="nome_usuario">Nome de Usuário</label>
+                {{ form.nome_usuario }}
+                
+                <label for="tem_carro">Possui Carro?</label>
+                {{ form.tem_carro }}
+                
+                <label for="tipo_usuario">Tipo de Usuário</label>
+                {{ form.tipo_usuario }}
+
+                
                 
                 <button type="submit" class="btn">Cadastrar</button>
             </form>
+            
             <p>
                 <a href="login.html" class="login-link">Você já possui uma conta? Login</a>
             </p>
