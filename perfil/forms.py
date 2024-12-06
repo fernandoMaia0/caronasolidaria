@@ -33,3 +33,11 @@ class UsuarioForm(forms.ModelForm):
             if  senha!= confirma_senha:
                 raise forms.ValidationError("As senhas não coincidem. Por favor, tente novamente.")
             return cleaned_data
+
+class EdicaoUsuarioForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nome_completo', 'email','senha','telefone','nome_usuario','cnh','tem_carro','tipo_usuario'] 
+        widgets = {
+            'senha': forms.PasswordInput(attrs={'required': False}), # Campo de senha seguro
+        }

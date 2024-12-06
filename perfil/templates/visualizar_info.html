@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do Usuário</title>
+    <section>
+        <div class="container">
+            <h1 class="section-title">Informações do Usuário</h1>
+            <div class="user-info">
+                <p><span>Nome Completo:</span> {{ usuario.nome_completo }}</p>
+                <p><span>Email:</span> {{ usuario.email }}</p>
+                <p><span>Telefone:</span> {{usuario.telefone}}</p>
+                <p><span>Motorista(M) ou passageiro(P)?:</span> {{usuario.tipo_usuario}}</p>
+                <p><span>CNH(usuarios sem cnh verão None):</span> {{usuario.cnh}}</p>
+                <p><span>Nome de usuario:</span> {{usuario.nome_usuario}}</p>
+                
+               
+                
+            </div>
+            <form method="POST" action="{% url 'perfil:excluir' %}" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?')">
+                {% csrf_token %}
+                <button type="submit" class="btn-default">Excluir Conta</button>
+            </form>
+            
+            <form method="POST" action="{% url 'perfil:edicao' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-default">Ir para Edição</button>
+            </form>
+            
+
+        </div>
+    </section>

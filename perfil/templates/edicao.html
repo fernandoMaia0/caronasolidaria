@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Editar Perfil</h1>
+                <p>Atualize suas informações abaixo:</p>
+            </div>
+            
+            <!-- Formulário -->
+            <form method="post">
+                {% csrf_token %}
+                
+                <!-- Renderizar campos do formulário -->
+                {% if form %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            
+                            <!-- Exibir mensagens de erro -->
+                            {% if field.errors %}
+                                <div class="error">
+                                    {% for error in field.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="error">Formulário não encontrado.</p>
+                {% endif %}
+    
+                <!-- Botão de ação -->
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </body>
+    </html>
