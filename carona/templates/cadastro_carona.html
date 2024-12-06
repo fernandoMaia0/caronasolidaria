@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caronas UFVJM - Editar Carona</title>
+  <link rel="stylesheet" href="{% static 'admin/css/carona-cadastro.css' %}">
+</head>
+<body>
+  <header>
+    <div class="logo">Caronas UFVJM</div>
+    <div class="user-name">Nome do estudante</div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Editar carona</h1>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="nome-carona">Título da carona</label>
+          <input type="text" id="nome-carona" name="nome-carona" placeholder="Ex: Carona para Campus JK" required>
+        </div>
+
+        <h2>Ponto de encontro</h2>
+        <div class="form-group">
+          <input type="text" id="ponto-encontro" name="ponto-encontro" placeholder="Ex: Largo Dom João" required>
+        </div>
+
+        <h2>Destino</h2>
+        <div class="form-group">
+         
+          <input type="text" id="destino" name="destino" placeholder="Ex: Campus JK - Bloco A" required>
+        </div>
+
+        <div class="form-group">
+          <label for="horario">Horário</label>
+          <input type="time" id="horario" name="horario" required>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição (opcional)</label>
+          <textarea id="descricao" name="descricao" placeholder="Ex: Tenho 2 vagas no carro. Ponto de encontro Cordeiro Rio Grande."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
