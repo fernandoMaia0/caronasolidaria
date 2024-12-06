@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carona Amiga</title>
+    <link rel="stylesheet" href="{% static 'admin/css/busca-tela.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Carona Amiga</div>
+        <div class="user-profile">Nome do usuário</div>
+    </header>
+    <main>
+        <section class="search-section">
+            <input type="text" placeholder="Saindo de" class="input-field">
+            <input type="text" placeholder="Indo para" class="input-field">
+            <input type="time" class="input-field">
+            <button class="search-button">🔍</button>
+        </section>
+        <section class="results-section">
+            <h2>Resultados</h2>
+            <div class="result-card">
+                <div class="profile-picture"></div>
+                <div class="info">
+                    <p><strong>Saindo de:</strong> Largo Dom João</p>
+                    <p><strong>Horário:</strong> 07:20</p>
+                    <p><strong>Indo para:</strong> Campus JK</p>
+                    <p><strong>Vagas Disponíveis:</strong> 1</p>
+                </div>
+                <button class="interested-button">Estou interessado</button>
+            </div>
+            <div class="result-card">
+                <div class="profile-picture"></div>
+                <div class="info">
+                    <p><strong>Saindo de:</strong> Rio Grande</p>
+                    <p><strong>Horário:</strong> 10:20</p>
+                    <p><strong>Indo para:</strong> Campus II</p>
+                    <p><strong>Vagas Disponíveis:</strong> 4</p>
+                </div>
+                <button class="interested-button">Estou interessado</button>
+            </div>
+            <div class="result-card">
+                <div class="profile-picture"></div>
+                <div class="info">
+                    <p><strong>Saindo de:</strong> Campus JK</p>
+                    <p><strong>Horário:</strong> 16:30</p>
+                    <p><strong>Indo para:</strong> Pernilongo </p>
+                    <p><strong>Vagas Disponíveis:</strong> 2</p>
+                </div>
+                <button class="interested-button">Estou interessado</button>
+            </div>
+            <!-- Repita para os outros resultados -->
+        </section>
+        <section class="pagination">
+            <button class="pagination-button">❮</button>
+            <button class="pagination-button active">1</button>
+            <button class="pagination-button">2</button>
+            <button class="pagination-button">3</button>
+            <button class="pagination-button">❯</button>
+        </section>
+    </main>
+</body>
+</html>
