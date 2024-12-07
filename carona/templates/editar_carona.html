@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Carona</title>
+    <link rel="stylesheet" href="{% static 'admin/css/editar_carona.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Carona Amiga</h1>
+        <div class="user-profile">Nome do usuário</div>
+    </div>
+    <div class="container">
+        <h2>Editar carona</h2>
+        <form>
+            <label for="nome-carona">Nome da carona</label>
+            <input type="text" id="nome-carona" placeholder="">
+
+            <h3>Ponto de saida</h3>
+            <div class="location-group">
+                
+                <input type="text" id="estado-saida" placeholder="Largo Dom João">
+
+            </div>
+
+            <h3>Indo para</h3>
+            <div class="location-group">
+
+                <input type="text" id="estado-destino" placeholder="Campus JK">
+
+
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" value="07:30">
+
+            <label for="descricao">Descrição (opcional)</label>
+            <textarea id="descricao" placeholder="Descrição"></textarea>
+
+            <div class="buttons">
+                <button type="button" class="delete-btn">Apagar</button>
+                <button type="submit" class="apply-btn">Aplicar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

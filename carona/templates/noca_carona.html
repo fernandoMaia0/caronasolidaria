@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Carona</title>
+  <link rel="stylesheet" href="{% static 'admin/css/nova_carona.css' %}">
+</head>
+<body>
+  <header>
+    <div class="logo">Carona Solidária</div>
+    <div class="user-name">Nome do usuário</div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Nome da carona</h1>
+      <div class="card">
+        <div class="card-header">
+          <button class="btn">Editar</button>
+          <button class="btn">Mensagens</button>
+        </div>
+        <div class="card-content">
+          <h2>Motorista</h2>
+          <p><strong>Nome:</strong> Matheus Oliveira</p>
+
+          <h2>Saindo de</h2>
+          <p><strong>Ponto de encontro:</strong> Largo Dom João</p>
+
+          <h2>Indo para</h2>
+          <p><strong>Destino:</strong> UFVJM - Campus JK</p>
+
+          <h2>Detalhes</h2>
+          <p><strong>Horário:</strong> 7:00</p>
+          <p><strong>Vagas:</strong> 2 vagas (4 lugares no total)</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
