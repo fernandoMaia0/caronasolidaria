@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carona Amiga</title>
+    <link rel="stylesheet" href="{% static 'admin/css/inicio.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Carona Solidária</div>
+        <div class="user-info">Nome do usuário</div>
+    </header>
+
+    <main class="main-content">
+        <div class="search-bar">
+            <input type="text" placeholder="Ponto de partidade" class="input">
+            <input type="text" placeholder="Indo para" class="input">
+            <input type="date" class="input">
+            <input type="time" class="input">
+            <button class="search-button">🔍</button>
+        </div>
+
+        <section class="recent-rides">
+            <h2>Caronas criadas recentemente</h2>
+            <div class="rides-container">
+                <div class="ride-card">
+                    <h3>Carona</h3>
+                    <p>Motorista: nome</p>
+                    <p>Saindo: Parnamirim</p>
+                    <p>Destino: Natal</p>
+                </div>
+                <div class="ride-card">
+                    <h3>Carona</h3>
+                    <p>Motorista: nome</p>
+                    <p>Saindo: Parnamirim</p>
+                    <p>Destino: Natal</p>
+                </div>
+            </div>
+            <button class="see-more">Ver mais</button>
+        </section>
+
+        <section class="new-drivers">
+            <h2>Motoristas novos</h2>
+            <div class="drivers-container">
+                <div class="driver-card">
+                    <div class="driver-info">
+                        <div class="driver-avatar">👤</div>
+                        <p>Motorista</p>
+                        <p>⭐ 5.0</p>
+                    </div>
+                    <div class="driver-rides">
+                        <p>Carona 1</p>
+                        <p>Carona 1</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-info">
+                        <div class="driver-avatar">👤</div>
+                        <p>Motorista</p>
+                        <p>⭐ 5.0</p>
+                    </div>
+                    <div class="driver-rides">
+                        <p>Carona 1</p>
+                        <p>Carona 1</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
