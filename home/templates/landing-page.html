@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carona UFVJM</title>
+    <link rel="stylesheet" href="{% static 'admin/css/landing-page.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="#">Carona UFVJM</a>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="nova_carona.html">Caronas</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <!-- Botão de oferecer carona -->
+            <a href="nova_carona.html" class="btn-action">+ Oferecer Carona</a>
+            <!-- Dropdown de usuário -->
+            <div class="user-dropdown">
+                <button class="user-icon">
+                    <img src="user-placeholder.png" alt="Foto do usuário" class="user-photo" />
+                    <span class="dropdown-icon">▼</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="editar_perfil.html">Editar Perfil</a></li>
+                    <li><a href="login.html">Editar Carona</a></li>
+                    <li><a href="editar_carona.html">Login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="login.html">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Encontre sua carona para a UFVJM</h1>
+            <p>Viaje com economia, segurança e integração entre estudantes.</p>
+            <form class="search-form">
+                <input type="text" placeholder="Ponto de partida" required>
+                <input type="text" placeholder="Destino" required>
+                <input type="date" required>
+                <input type="time" required>
+                <button type="submit">Buscar Carona</button>
+            </form>
+        </section>
+
+        <!-- Featured Rides Section -->
+        <section class="featured-rides">
+            <h2>Caronas em Destaque</h2>
+            <div class="ride-card">
+                <div class="ride-info">
+                    <p><strong>Saindo:</strong> Diamantina</p>
+                    <p><strong>Destino:</strong> Campus JK</p>
+                    <p><strong>Motorista:</strong> Lucas</p>
+                </div>
+                <button class="join-ride">Entrar na carona</button>
+            </div>
+            <div class="ride-card">
+                <div class="ride-info">
+                    <p><strong>Saindo:</strong> Largo Dom João</p>
+                    <p><strong>Destino:</strong> Campus JK</p>
+                    <p><strong>Motorista:</strong> Ana</p>
+                </div>
+                <button class="join-ride">Entrar na carona</button>
+            </div>
+            <div class="ride-card">
+                <div class="ride-info">
+                    <p><strong>Saindo:</strong> Rio Grande</p>
+                    <p><strong>Destino:</strong> Campus JK</p>
+                    <p><strong>Motorista:</strong> Fernando</p>
+                </div>
+                <button class="join-ride">Entrar na carona</button>
+            </div>
+
+
+
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <h2>Por que escolher o Carona UFVJM?</h2>
+            <div class="benefit-container">
+                <div class="benefit">
+                    <div class="icon">🚗</div>
+                    <h3>Caronas Seguras e Práticas</h3>
+                    <p>Conectamos estudantes da UFVJM para compartilharem caronas, promovendo segurança, economia e integração entre os alunos.</p>
+                </div>
+                <div class="benefit">
+                    <div class="icon">👥</div>
+                    <h3>Confiança entre Estudantes</h3>
+                    <p>Nossa plataforma permite verificar perfis, avaliações e histórico dos motoristas, garantindo tranquilidade para todos.</p>
+                </div>
+                <div class="benefit">
+                    <div class="icon">📅</div>
+                    <h3>Planeje sua Viagem com Facilidade</h3>
+                    <p>Agende sua carona com antecedência de forma rápida e simples, aproveitando horários flexíveis para ir e voltar da UFVJM.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>O que nossos usuários dizem</h2>
+            <div class="testimonial">
+                <p>"O Carona UFVJM tornou meu trajeto para a faculdade muito mais fácil e econômico!"</p>
+                <span>- Maria, estudante de Engenharia</span>
+            </div>
+            <div class="testimonial">
+                <p>"Agora posso planejar minhas viagens com mais segurança e conhecer outros estudantes!"</p>
+                <span>- Pedro, estudante de Medicina</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Carona UFVJM. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
