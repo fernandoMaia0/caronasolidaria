@@ -36,7 +36,7 @@ def visualizar_info(request):
     # Recupera o ID do usuário logado
     usuario_id = request.session.get('usuario_id')
     if not usuario_id:
-        return redirect('login')  # Redireciona para a tela de login se não estiver logado
+        return redirect('perfil:login')  # Redireciona para a tela de login se não estiver logado
 
     # Busca o usuário no banco de dados
     usuario = get_object_or_404(Usuario, id=usuario_id)
