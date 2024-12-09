@@ -6,6 +6,8 @@ class Endereco(models.Model):
     rua = models.CharField(max_length=255)
     numero = models.IntegerField()
     bairro = models.CharField(max_length=255)
+    class Meta:
+        app_label = 'endereco'
 
     def __str__(self):
         return f"{self.rua}, {self.numero} - {self.cidade}/{self.estado}"
