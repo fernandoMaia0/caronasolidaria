@@ -1,61 +1,102 @@
-/* LOGIN FORM */
-
-.login {
-    background: var(--darkened-bg);
-    height: auto;
+/* Variáveis de cores */
+:root {
+    --background-color: #f5f5f5;
+    --form-bg: #ffffff;
+    --border-color: #ccc;
+    --button-bg: #007BFF;
+    --button-bg-hover: #0056b3;
+    --text-color: #333;
+    --error-color: red;
 }
 
-.login #header {
-    height: auto;
-    padding: 15px 16px;
+/* Estilo geral */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.login #header h1 {
-    font-size: 1.125rem;
-    margin: 0;
+#container {
+    background: var(--form-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.login #header h1 a {
-    color: var(--header-link-color);
+h1 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
-.login #content {
-    padding: 20px 20px 0;
+p {
+    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
-.login #container {
-    background: var(--body-bg);
-    border: 1px solid var(--hairline-color);
-    border-radius: 4px;
-    overflow: hidden;
-    width: 28em;
-    min-width: 300px;
-    margin: 100px auto;
-    height: auto;
+/* Campos do formulário */
+.form-row {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.login .form-row {
-    padding: 4px 0;
-}
-
-.login .form-row label {
+label {
+    font-weight: bold;
     display: block;
-    line-height: 2em;
+    margin-bottom: 5px;
 }
 
-.login .form-row #id_username, .login .form-row #id_password {
-    padding: 8px;
+input[type="email"],
+input[type="password"] {
     width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     box-sizing: border-box;
+    font-size: 1rem;
 }
 
-.login .submit-row {
-    padding: 1em 0 0 0;
-    margin: 0;
-    text-align: center;
+/* Botão de envio */
+.submit-row button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-bg);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.login .password-reset-link {
-    text-align: center;
+.submit-row button:hover {
+    background-color: var(--button-bg-hover);
+}
+
+/* Link de recuperação de senha */
+.login-options {
+    margin-top: 15px;
+}
+
+.login-options a {
+    color: var(--button-bg);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagem de erro */
+.error {
+    color: var(--error-color);
+    margin-top: 10px;
 }
