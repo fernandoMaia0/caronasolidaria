@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Caronas</title>
+</head>
+<body>
+    <h1>Lista de Caronas</h1>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Motorista</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carona in caronas %}
+            <tr>
+                <td>{{ carona.nome }}</td>
+                <td>{{ carona.data }}</td>
+                <td>{{ carona.horario }}</td>
+                <td>{{ carona.motorista }}</td>
+                <td>
+                    <a href="{% url 'editar_carona' carona.id %}">Editar</a>
+                    <a href="{% url 'excluir_carona' carona.id %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

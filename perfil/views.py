@@ -3,6 +3,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from .forms import UsuarioForm,EdicaoUsuarioForm
 from models.Usuario import Usuario
 from django.contrib import messages
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ def cadastro_usuario(request):
             usuario = form.save(commit=False)
             usuario.senha = make_password(form.cleaned_data["senha"])
             usuario.save()
-            return redirect('login')  # Substitua pelo nome da URL do login
+            return redirect('perfil:login')  
     else:
         form = UsuarioForm()
     
@@ -30,7 +31,7 @@ def excluir_conta(request):
             messages.success(request, "Sua conta foi excluída com sucesso.")
             return redirect('home:index')  # Redirecione para a página inicial ou de logout
     messages.error(request, "Erro ao excluir a conta. Tente novamente.")
-    return redirect('perfil:visualiza_info')  # Se não for POST, redirecione de volta
+    return redirect('perfil:visualizar_info')  # Se não for POST, redirecione de volta
 
 def visualizar_info(request):
     # Recupera o ID do usuário logado
@@ -59,8 +60,8 @@ def login(request):
                 request.session['nome_completo']= usuario.nome_completo
                 request.session['email']= usuario.email
                 request.session['tipo_usuario']= usuario.tipo_usuario
-                
-                return redirect("perfil:visualiza_info")
+                print(usuario.nome_usuario)
+                return redirect("home:index")
             else:
                 return render(request, 'login.html', {'error': 'Senha incorreta'})
         except Usuario.DoesNotExist:
@@ -68,16 +69,14 @@ def login(request):
     return render(request, 'login.html')
 
 def edicao(request):
-    # Identificar o fluxo da chamada: normal ou gerencial
+   
     usuario_id = request.session.get('usuario_id')
     
-
     if not usuario_id:
-        return redirect('login')
+        return redirect('perfil:login')
 
     usuario = get_object_or_404(Usuario, id=usuario_id)
 
-    # Manipulação do formulário
     if request.method == 'POST':
         form = EdicaoUsuarioForm(request.POST, instance=usuario)
         if form.is_valid():
@@ -92,3 +91,9 @@ def edicao(request):
 
     # Renderizar o template
     return render(request, 'edicao.html', {'form': form})
+
+def logoutuser(request):
+   
+    logout(request)
+    
+    return redirect('home:index') 

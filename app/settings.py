@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'carona',
     'perfil',
     'home',
+    'endereco',
 ]
 
 MIDDLEWARE = [
