@@ -4,6 +4,8 @@ from .forms import UsuarioForm,EdicaoUsuarioForm
 from models.Usuario import Usuario
 from django.contrib import messages
 from django.contrib.auth import logout
+from perfil.auth_manager import AuthManager
+
 
 # Create your views here.
 
@@ -50,17 +52,12 @@ def login(request):
         senha = request.POST.get('password')
 
         try:
-            # Busca o usuário pelo email
             usuario = Usuario.objects.get(email=email)
-
-            # Verifica se a senha corresponde
             if check_password(senha, usuario.senha):
-                # Salva informações na sessão para autenticar o usuário
-                request.session['usuario_id'] = usuario.id
-                request.session['nome_completo']= usuario.nome_completo
-                request.session['email']= usuario.email
-                request.session['tipo_usuario']= usuario.tipo_usuario
-                print(usuario.nome_usuario)
+                # Usa o Singleton para autenticar e salvar as informações do usuário
+                auth_manager = AuthManager()
+                auth_manager.login(request, usuario)
+
                 return redirect("home:index")
             else:
                 return render(request, 'login.html', {'error': 'Senha incorreta'})
@@ -93,7 +90,16 @@ def edicao(request):
     return render(request, 'edicao.html', {'form': form})
 
 def logoutuser(request):
-   
-    logout(request)
-    
-    return redirect('home:index') 
+    # Usa o Singleton para limpar o estado de autenticação
+    auth_manager = AuthManager()
+    auth_manager.logout(request)
+
+    return redirect('home:index')
+
+def landing_page(request):
+    # Obtém informações do usuário autenticado via Singleton
+    auth_manager = AuthManager()
+    usuario_info = auth_manager.get_user_info(request)
+
+    # Envia as informações para o template
+    return render(request, 'landing_page.html', {'usuario': usuario_info})

@@ -1,44 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1>Editar Perfil</h1>
-                <p>Atualize suas informações abaixo:</p>
-            </div>
-            
-            <!-- Formulário -->
-            <form method="post">
-                {% csrf_token %}
-                
-                <!-- Renderizar campos do formulário -->
-                {% if form %}
-                    {% for field in form %}
-                        <div class="form-group">
-                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                            {{ field }}
-                            
-                            <!-- Exibir mensagens de erro -->
-                            {% if field.errors %}
-                                <div class="error">
-                                    {% for error in field.errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="error">Formulário não encontrado.</p>
-                {% endif %}
-    
-                <!-- Botão de ação -->
-                <button type="submit">Salvar Alterações</button>
-            </form>
+    <style>
+        /* Resetando estilos padrões */
+        body, h1, p, form, div, label, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilização do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a4a4a;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Grupo de formulário */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            color: #4a4a4a;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #00796b;
+            outline: none;
+            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+        }
+
+        /* Mensagem de erro */
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Botão */
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Editar Perfil</h1>
+            <p>Atualize suas informações abaixo:</p>
         </div>
-    </body>
-    </html>
+        
+        <!-- Formulário -->
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Renderizar campos do formulário -->
+            {% if form %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        
+                        <!-- Exibir mensagens de erro -->
+                        {% if field.errors %}
+                            <div class="error">
+                                {% for error in field.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="error">Formulário não encontrado.</p>
+            {% endif %}
+    
+            <!-- Botão de ação -->
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

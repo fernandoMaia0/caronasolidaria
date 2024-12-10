@@ -27,19 +27,21 @@
                 <button class="user-icon">
                     <img src="user-placeholder.png" alt="Foto do usuário" class="user-photo" />
                     <span class="dropdown-icon">▼</span>
+                    {% if usuario.is_authenticated %}
+                    <p>Bem-vindo, {{ usuario.nome_completo }}</p>
+                {% else %}
+                    <p>Você não está autenticado.</p>
+                {% endif %}
+
                 </button>
                 <ul class="dropdown-menu">
-                    {% if user.is_authenticated %}
+                    {% if usuario.is_authenticated %}
                         <li><a href="{% url 'perfil:edicao' %}">Editar Perfil</a></li>
                         <li><a href="{% url 'carona:editar_carona' %}">Editar Carona</a></li>
                         <li><a href="{% url 'perfil:logoutuser' %}">Sair</a></li>
                     {% else %}
                         <li><a href="{% url 'perfil:login' %}">Login</a></li>
-<<<<<<< HEAD
-                       
-=======
-           
->>>>>>> 8f6fd764916ce719df108ba877023405f1215df2
+                        <li><a href="{%url 'perfil:cadastro' %}">cadastre-se</a>
                     {% endif %}
                 </ul>
             </div>

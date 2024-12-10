@@ -5,30 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações do Usuário</title>
+    <style>
+        /* Resetando estilos padrões */
+        body, h1, p, form, button, section, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilização do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        /* Título da seção */
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #6c63ff;
+            padding-bottom: 10px;
+        }
+
+        /* Informações do usuário */
+        .user-info p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .user-info span {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+
+        /* Botões */
+        form {
+            margin-top: 20px;
+        }
+
+        .btn-default {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .btn-default:hover {
+            background-color: #00796b;
+        }
+
+        /* Estilo responsivo */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .user-info p {
+                font-size: 14px;
+            }
+
+            .btn-default {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
     <section>
         <div class="container">
             <h1 class="section-title">Informações do Usuário</h1>
             <div class="user-info">
                 <p><span>Nome Completo:</span> {{ usuario.nome_completo }}</p>
                 <p><span>Email:</span> {{ usuario.email }}</p>
-                <p><span>Telefone:</span> {{usuario.telefone}}</p>
-                <p><span>Motorista(M) ou passageiro(P)?:</span> {{usuario.tipo_usuario}}</p>
-                <p><span>CNH(usuarios sem cnh verão None):</span> {{usuario.cnh}}</p>
-                <p><span>Nome de usuario:</span> {{usuario.nome_usuario}}</p>
-                
-               
-                
+                <p><span>Telefone:</span> {{ usuario.telefone }}</p>
+                <p><span>Motorista(M) ou passageiro(P)?:</span> {{ usuario.tipo_usuario }}</p>
+                <p><span>CNH(usuarios sem cnh verão None):</span> {{ usuario.cnh }}</p>
+                <p><span>Nome de usuario:</span> {{ usuario.nome_usuario }}</p>
             </div>
             <form method="POST" action="{% url 'perfil:excluir' %}" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?')">
                 {% csrf_token %}
                 <button type="submit" class="btn-default">Excluir Conta</button>
             </form>
-            
             <form method="POST" action="{% url 'perfil:edicao' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn-default">Ir para Edição</button>
             </form>
-            
-
         </div>
     </section>
+</body>
+</html>
