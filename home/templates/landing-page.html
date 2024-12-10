@@ -25,7 +25,7 @@
             <!-- Dropdown de usuário -->
             <div class="user-dropdown">
                 <button class="user-icon">
-                    <img src="user-placeholder.png" alt="Foto do usuário" class="user-photo" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Foto do usuário" class="user-photo" />
                     <span class="dropdown-icon">▼</span>
                 </button>
                 <ul class="dropdown-menu">
@@ -35,10 +35,13 @@
                         <li><a href="{% url 'perfil:logoutuser' %}">Sair</a></li>
                     {% else %}
                         <li><a href="{% url 'perfil:login' %}">Login</a></li>
-           
                     {% endif %}
                 </ul>
             </div>
+            
+            
+            
+            
         </div>
     </header>
     
