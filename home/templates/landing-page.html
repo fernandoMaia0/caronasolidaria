@@ -29,11 +29,14 @@
                     <span class="dropdown-icon">▼</span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="editar_perfil.html">Editar Perfil</a></li>
-                    <li><a href="login.html">Editar Carona</a></li>
-                    <li><a href="editar_carona.html">Login</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
-                    <li><a href="login.html">Sair</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'perfil:edicao' %}">Editar Perfil</a></li>
+                        <li><a href="{% url 'carona:editar_carona' %}">Editar Carona</a></li>
+                        <li><a href="{% url 'perfil:logoutuser' %}">Sair</a></li>
+                    {% else %}
+                        <li><a href="{% url 'perfil:login' %}">Login</a></li>
+                        <li><a href="{% url 'perfil:Cadastro'%}">Cadastro</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -51,40 +54,42 @@
                 <input type="date" required>
                 <input type="time" required>
                 <button type="submit">Buscar Carona</button>
-            </form>
+             </form>
         </section>
 
         <!-- Featured Rides Section -->
         <section class="featured-rides">
             <h2>Caronas em Destaque</h2>
+            {% csrf_token %}
+            {% for c in caronas %}
             <div class="ride-card">
                 <div class="ride-info">
-                    <p><strong>Saindo:</strong> Diamantina</p>
-                    <p><strong>Destino:</strong> Campus JK</p>
-                    <p><strong>Motorista:</strong> Lucas</p>
+                    <!-- Exibindo o endereço de saída -->
+                    <p><strong>Saindo:</strong> {{ c.endereco_saida.rua }}, {{ c.endereco_saida.numero }} - {{ c.endereco_saida.bairro }}, {{ c.endereco_saida.cidade }}/{{ c.endereco_saida.estado }}</p>
+                    
+                    <!-- Exibindo o endereço de destino -->
+                    <p><strong>Destino:</strong> {{ c.endereco_destino.rua }}, {{ c.endereco_destino.numero }} - {{ c.endereco_destino.bairro }}, {{ c.endereco_destino.cidade }}/{{ c.endereco_destino.estado }}</p>
+                    
+                    <!-- Exibindo o nome do motorista -->
+                    <p><strong>Motorista:</strong> {{ c.motorista.nome_completo }}</p>
+                    
+                    <!-- Exibindo os passageiros -->
+                    <p><strong>Passageiros:</strong> 
+                        {% for p in c.passageiros.all %}
+                            <p>{{ p.nome_completo }}</p>
+                        {% endfor %}
+                    </p>
                 </div>
-                <button class="join-ride">Entrar na carona</button>
+                
+                <form id="formEntraCarona" action="{% url 'carona:entrar_carona' c.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="join-ride">Entrar na carona</button>
+                </form>
+            
             </div>
-            <div class="ride-card">
-                <div class="ride-info">
-                    <p><strong>Saindo:</strong> Largo Dom João</p>
-                    <p><strong>Destino:</strong> Campus JK</p>
-                    <p><strong>Motorista:</strong> Ana</p>
-                </div>
-                <button class="join-ride">Entrar na carona</button>
-            </div>
-            <div class="ride-card">
-                <div class="ride-info">
-                    <p><strong>Saindo:</strong> Rio Grande</p>
-                    <p><strong>Destino:</strong> Campus JK</p>
-                    <p><strong>Motorista:</strong> Fernando</p>
-                </div>
-                <button class="join-ride">Entrar na carona</button>
-            </div>
-
-
-
+            {% endfor %}
         </section>
+        
 
         <!-- Benefits Section -->
         <section class="benefits">

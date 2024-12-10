@@ -3,6 +3,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from .forms import UsuarioForm,EdicaoUsuarioForm
 from models.Usuario import Usuario
 from django.contrib import messages
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -59,8 +60,8 @@ def login(request):
                 request.session['nome_completo']= usuario.nome_completo
                 request.session['email']= usuario.email
                 request.session['tipo_usuario']= usuario.tipo_usuario
-                
-                return redirect("perfil:visualizar_info")
+                print(usuario.nome_usuario)
+                return redirect("home:index")
             else:
                 return render(request, 'login.html', {'error': 'Senha incorreta'})
         except Usuario.DoesNotExist:
@@ -90,3 +91,9 @@ def edicao(request):
 
     # Renderizar o template
     return render(request, 'edicao.html', {'form': form})
+
+def logoutuser(request):
+   
+    logout(request)
+    
+    return redirect('home:index') 

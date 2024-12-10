@@ -17,11 +17,6 @@ def criar_carona(request):
         form = CaronaForm()
     return render(request, 'criar_carona.html', {'form': form})
 
-# READ (Listar Caronas)
-def listar_caronas(request):
-    caronas = Carona.objects.all()
-    return render(request, 'listar_caronas.html', {'caronas': caronas})
-
 # UPDATE
 def editar_carona(request, id):
     carona = get_object_or_404(Carona, id=id)
@@ -42,3 +37,5 @@ def excluir_carona(request, id):
         return redirect('listar_caronas')
     return render(request, 'carona:excluir_carona.html', {'carona': carona})
 
+def entrar_carona(request, id):
+    print(f"carona {id}")

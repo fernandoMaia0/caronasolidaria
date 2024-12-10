@@ -22,4 +22,4 @@ class Carona(models.Model):
         app_label = 'carona'
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome}  {self.passageiros}"
